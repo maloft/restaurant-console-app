@@ -2,20 +2,39 @@ package dev.entite;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="plat")
 public class Plat {
 
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
+	
+	@Column(name = "nom")
     private String nom;
+	
+	
+	@Column(name = "PRIX")
     private Integer prixEnCentimesEuros;
+	
+	
+	public Plat() {}
 
-    public Plat() {
-    }
+    public Plat(String nomPlat, Integer prixPlat) {
+		this.nom = nomPlat;
+		this.prixEnCentimesEuros = prixPlat;
+	}
 
-    public Plat(String nom, Integer prixEnCentimesEuros) {
-        this.nom = nom;
-        this.prixEnCentimesEuros = prixEnCentimesEuros;
-    }
-
-    public String getNom() {
+	public String getNom() {
         return nom;
     }
 
